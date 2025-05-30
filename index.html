@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compteur de Points - Pétanque</title>
+  <link rel="manifest" href="manifest.json" />
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      background: #f8f9fa;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .hidden { display: none; }
+    .team { margin-bottom: 20px; }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    input, select {
+      padding: 8px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    .scoreboard {
+      margin-top: 30px;
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+    }
+    .points-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .point-box {
+      flex: 1 0 22%;
+      text-align: center;
+      background: #e0e0e0;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .team1 .point-box.selected {
+      background: #007bff;
+      color: white;
+    }
+    .team2 .point-box.selected {
+      background: #dc3545;
+      color: white;
+    }
+    #teamNames span.team1 {
+      color: #007bff;
+      font-weight: bold;
+    }
+    #teamNames span.team2 {
+      color: #dc3545;
+      font-weight: bold;
+    }
+    .winner {
+      margin-top: 20px;
+      padding: 15px;
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 5px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .stats {
+      margin-top: 20px;
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeeba;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    #scoreDisplay {
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Compteur de Points - Pétanque</h1>
+  <div id="setup">
+    <h2>Choisir le mode</h2>
+    <select id="gameMode">
+      <option value="1">Simple (1 vs 1)</option>
+      <option value="2">Doublette (2 vs 2)</option>
+      <option value="3">Triplette (3 vs 3)</option>
+    </select>
+    <div id="players"></div>
+    <button onclick="startGame()">Démarrer la partie</button>
+  </div>
+
+  <div id="game" class="hidden">
+    <h2>Partie en cours</h2>
+    <div id="teamNames" class="teams-container"></div>
+    <div>
+      <label>Sélectionnez les points de la mène :</label>
+      <div><strong>Équipe 1 :</strong><div id="team1Points" class="points-grid team1"></div></div>
+      <div><strong>Équipe 2 :</strong><div id="team2Points" class="points-grid team2"></div></div>
+      <button onclick="addScores()">Ajouter la mène</button>
+    </div>
+    <div class="scoreboard">
+      <h3>Score</h3>
+      <p id="scoreDisplay">0 - 0</p>
+      <p id="rounds"></p>
+      <div id="winnerMessage" class="winner hidden"></div>
+      <div id="statistics" class="stats hidden"></div>
+      <button onclick="resetGame()">Recommencer la partie</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>
