@@ -1,10 +1,10 @@
 {
   "name": "Compteur de Points - Pétanque",
   "short_name": "Pétanque",
-  "start_url": "index.html",
+  "start_url": ".",
   "display": "standalone",
-  "background_color": "#f8f9fa",
-  "theme_color": "#007bff",
+  "background_color": "#ffffff",
+  "theme_color": "#1e90ff",
   "icons": [
     {
       "src": "icon-192.png",

@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Compteur de Points - Pétanque</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
 </head>
 <body>
   <h1>Compteur de Points - Pétanque</h1>
@@ -27,13 +33,15 @@
     <div id="teamNames" class="teams-container team-names"></div>
 
     <div class="score-section">
-      <div class="team-score">
+      <div class="team-score team1">
         <h3 class="team1">Équipe 1</h3>
+        <div class="players-names" id="team1Players"></div>
         <div class="score-value" id="score1">0</div>
         <div id="team1Points" class="points-grid team1"></div>
       </div>
-      <div class="team-score">
+      <div class="team-score team2">
         <h3 class="team2">Équipe 2</h3>
+        <div class="players-names" id="team2Players"></div>
         <div class="score-value" id="score2">0</div>
         <div id="team2Points" class="points-grid team2"></div>
       </div>
@@ -44,9 +52,11 @@
       <p id="rounds"></p>
       <div id="winnerMessage" class="winner hidden"></div>
       <div id="statistics" class="stats hidden"></div>
+      <button type="button" onclick="newMatch()">Nouvelle manche</button>
       <button type="button" onclick="resetGame()">Recommencer la partie</button>
     </div>
   </div>
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
