@@ -38,15 +38,30 @@ function updatePlayerFields() {
 function shuffleTeams() {
   const mode = parseInt(document.getElementById("gameMode").value);
   const totalPlayers = mode * 2;
-  players = [];
+  const playerNames = [];
+
   for (let i = 0; i < totalPlayers; i++) {
-    const name = document.getElementById("player" + i).value.trim() || `Joueur ${i+1}`;
-    players.push(name);
+    const input = document.getElementById("player" + i);
+    if (input && input.value.trim() !== "") {
+      playerNames.push(input.value.trim());
+    }
   }
-  players = players.sort(() => Math.random() - 0.5);
-  team1 = players.slice(0, mode);
-  team2 = players.slice(mode);
-  displayTeams();
+
+  if (playerNames.length !== totalPlayers) {
+    alert("Veuillez remplir tous les noms de joueurs.");
+    return;
+  }
+
+  // Mélanger les noms aléatoirement
+  const shuffled = playerNames.sort(() => Math.random() - 0.5);
+  team1 = shuffled.slice(0, mode);
+  team2 = shuffled.slice(mode);
+
+  // Mettre à jour les champs input avec les nouveaux noms
+  for (let i = 0; i < totalPlayers; i++) {
+    const input = document.getElementById("player" + i);
+    input.value = i < mode ? team1[i] : team2[i - mode];
+  }
 }
 
 function displayTeams() {
@@ -91,7 +106,8 @@ function setupPointButtons() {
   const team2Points = document.getElementById("team2Points");
   team1Points.innerHTML = '';
   team2Points.innerHTML = '';
-  const maxSelectable = gameMode === 1 ? 3 : 6;
+  const mode = parseInt(document.getElementById("gameMode").value);
+  const maxSelectable = mode === 1 ? 3 : 6;
   for (let i = 0; i <= maxSelectable; i++) {
     const b1 = document.createElement("button");
     const b2 = document.createElement("button");
