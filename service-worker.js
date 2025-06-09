@@ -13,6 +13,10 @@ self.addEventListener("install", (event) => {
   );
 });
 
+self.addEventListener('activate', event => {
+  event.waitUntil(clients.claim()); // active sur toutes les pages ouvertes
+});
+
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => response || fetch(event.request))
@@ -31,4 +35,8 @@ self.addEventListener('activate', event => {
       )
     )
   );
+});
+
+self.addEventListener('install', event => {
+  self.skipWaiting(); // prend effet immédiatement
 });
