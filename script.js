@@ -214,3 +214,25 @@ function resetGame() {
   document.getElementById("game").classList.add("hidden");
   document.getElementById("setup").classList.remove("hidden");
 }
+
+function newFullGame() {
+  // Réinitialiser toutes les variables
+  score1 = 0;
+  score2 = 0;
+  roundHistory = [];
+  team1 = [];
+  team2 = [];
+  players = [];
+
+  // Réinitialiser l'affichage
+  updatePlayerFields();
+  document.getElementById("rounds").innerHTML = "";
+  document.getElementById("winnerMessage").classList.add("hidden");
+
+  document.getElementById("game").classList.add("hidden");
+  document.getElementById("setup").classList.remove("hidden");
+
+  // Réactiver tous les boutons et vider les points
+  document.querySelectorAll(".points-grid button").forEach(btn => btn.disabled = false);
+  document.querySelector(".scoreboard button").disabled = false;
+}
