@@ -196,25 +196,6 @@ function updateScores() {
   document.getElementById("score2").textContent = score2;
 }
 
-function newMatch() {
-  score1 = 0;
-  score2 = 0;
-  roundHistory = [];
-  updateScores();
-  clearSelections();
-  document.getElementById("winnerMessage").classList.add("hidden");
-  displayRounds();
-  document.querySelectorAll(".points-grid button").forEach(btn => {
-    btn.disabled = false;
-  });
-document.querySelector(".scoreboard button").disabled = false;
-}
-
-function resetGame() {
-  document.getElementById("game").classList.add("hidden");
-  document.getElementById("setup").classList.remove("hidden");
-}
-
 function newFullGame() {
   // Réinitialiser toutes les variables
   score1 = 0;
@@ -236,3 +217,24 @@ function newFullGame() {
   document.querySelectorAll(".points-grid button").forEach(btn => btn.disabled = false);
   document.querySelector(".scoreboard button").disabled = false;
 }
+
+function newMatch() {
+  score1 = 0;
+  score2 = 0;
+  roundHistory = [];
+  updateScores();
+  clearSelections();
+  document.getElementById("winnerMessage").classList.add("hidden");
+  displayRounds();
+  document.querySelectorAll(".points-grid button").forEach(btn => {
+    btn.disabled = false;
+  });
+document.querySelector(".scoreboard button").disabled = false;
+}
+
+function resetGame() {
+  document.getElementById("game").classList.add("hidden");
+  document.getElementById("setup").classList.remove("hidden");
+}
+
+
