@@ -17,8 +17,8 @@ function updatePlayerFields() {
   const mode = parseInt(document.getElementById("gameMode").value);
   const team1Div = document.getElementById("team1Inputs");
   const team2Div = document.getElementById("team2Inputs");
-  team1Div.innerHTML = '<h3>Équipe 1</h3>';
-  team2Div.innerHTML = '<h3>Équipe 2</h3>';
+  team1Div.innerHTML = '<h3>Nous</h3>';
+  team2Div.innerHTML = '<h3>Eux</h3>';
 
   for (let i = 0; i < mode; i++) {
     const input = document.createElement("input");
@@ -159,8 +159,8 @@ function addScores() {
 
   if (score1 >= maxPoints || score2 >= maxPoints) {
     const winnerText = score1 >= maxPoints
-      ? `🎉 Équipe 1 (${team1.join(", ")}) gagne !`
-      : `🎉 Équipe 2 (${team2.join(", ")}) gagne !`;
+      ? `🎉 Nous (${team1.join(", ")}) gagne !`
+      : `🎉 Eux (${team2.join(", ")}) gagne !`;
 
     document.getElementById("winnerMessage").textContent = winnerText;
     document.getElementById("winnerMessage").classList.remove("hidden");
@@ -187,7 +187,7 @@ function displayRounds() {
   const rounds = document.getElementById("rounds");
   rounds.innerHTML = "<strong>Historique des mènes :</strong><br>";
   roundHistory.forEach((r, i) => {
-    rounds.innerHTML += `Mène ${i + 1} : Équipe 1 (${r.team1}) - Équipe 2 (${r.team2})<br>`;
+    rounds.innerHTML += `Mène ${i + 1} : Nous (${r.team1}) - Eux (${r.team2})<br>`;
   });
 }
 

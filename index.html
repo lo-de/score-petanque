@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Compteur de Points - Pétanque</title>
-  <link rel="manifest" href="manifest.json?v=2" />
+  <link rel="manifest" href="manifest.json?v=3" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -18,10 +18,10 @@
     </select>
     <div id="players">
      <div id="team1Inputs" class="team-inputs">
-       <h3>Équipe 1</h3>
+       <h3>Nous</h3>
      </div>
      <div id="team2Inputs" class="team-inputs">
-       <h3>Équipe 2</h3>
+       <h3>Eux</h3>
      </div>
     </div>
     <button type="button" onclick="startGame()">Démarrer la partie</button>
@@ -32,13 +32,13 @@
     <h2>Partie en cours</h2>
     <div class="score-section">
       <div class="team-score team1">
-        <h3 class="team1">Équipe 1</h3>
+        <h3 class="team1">Nous</h3>
         <div class="players-names" id="team1Players"></div>
         <div class="score-value" id="score1">0</div>
         <div id="team1Points" class="points-grid team1"></div>
       </div>
       <div class="team-score team2">
-        <h3 class="team2">Équipe 2</h3>
+        <h3 class="team2">Eux</h3>
         <div class="players-names" id="team2Players"></div>
         <div class="score-value" id="score2">0</div>
         <div id="team2Points" class="points-grid team2"></div>
